@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span>Programación WE</span>
+
+
+  <div *ngIf="user">
+    <img class="avatar-usuario" [src]="user?.avatar || 'https://default-avatar-url.com/default-avatar.png'"
+      alt="Avatar" />
+  </div>
+  <div *ngIf="user">
+    <span>{{ user?.name || 'Invitado' }}</span>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav="matSidenav" mode="side">
+    <div class="avatar-container">
+      <img class="avatar mat-elevation-z8"
+        src="https://universidadesdemexico.mx/logos/original/logo-instituto-tecnologico-de-oaxaca.webp" alt="Logo" />
+    </div>
+    <p class="name">Elaborado por:</p>
+    <p class="name">Manuel Eduardo Santiago Feria</p>
+
+    <mat-divider></mat-divider>
+    <br />
+
+    <button mat-button class="componentes" [matMenuTriggerFor]="menu">
+      Componentes Disponibles
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-product-list></app-product-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
