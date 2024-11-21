@@ -29,9 +29,13 @@ export class DashboardComponent {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.currentUser$.subscribe(user => {
+    this.userService.currentUser$.subscribe((user) => {
       this.user = user;
-      console.log('Usuario actual:', this.user); // Agregado para depuración
+      console.log('Usuario actual:', this.user);
     });
+  }
+
+  logout() {
+    this.userService.clearCurrentUser();
   }
 }

@@ -5,14 +5,18 @@
   </button>
   <span>Programación WE</span>
 
-
   <div *ngIf="user">
-    <img class="avatar-usuario" [src]="user?.avatar || 'https://default-avatar-url.com/default-avatar.png'"
-      alt="Avatar" />
+    <img
+      class="avatar-usuario"
+      [src]="user?.avatar || 'https://default-avatar-url.com/default-avatar.png'"
+      alt="Avatar"
+    />
   </div>
+
   <div *ngIf="user">
     <span>{{ user?.name || 'Invitado' }}</span>
   </div>
+
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container">
@@ -34,6 +38,11 @@
       <button mat-menu-item>Item 1</button>
       <button mat-menu-item>Item 2</button>
     </mat-menu>
+
+    <div *ngIf="user">
+      <button mat-button (click)="logout()">Cerrar sesión</button>
+    </div>
+
   </mat-sidenav>
 
   <mat-sidenav-content>

@@ -1,14 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatDialogModule} from '@angular/material/dialog';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -16,29 +18,30 @@ import { UserService } from '../../services/user.service';
   imports: [
     MatPaginator,
     MatSort,
-    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
     MatToolbarModule,
     MatCardModule,
-    MatDialogModule
+    FormsModule,
   ],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  displayedColumns: string[] = ['id', 'title', 'price', 'image'];
-  dataSource = new MatTableDataSource<any>([]); // Inicializa con un arreglo vacío
+  displayedColumns: string[] = ['id', 'title', 'price', 'image', 'edit', 'details', 'delete'];
+  dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // Llama al servicio para obtener los productos y asignarlos al dataSource
     this.userService.getProducts().subscribe((data: any[]) => {
-      this.dataSource.data = data; // Asigna los datos obtenidos
+      this.dataSource.data = data;
     });
   }
 
@@ -55,5 +58,110 @@ export class ProductListComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  openDeleteDialog(product: any): void {
+    const dialogRef = this.dialog.open(ProductDeleteDialog, {
+      width: '300px',
+      data: { product },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Eliminar solo de la tabla, no de la API
+        const index = this.dataSource.data.findIndex((p) => p.id === product.id);
+        if (index >= 0) {
+          this.dataSource.data.splice(index, 1);
+          this.dataSource.data = [...this.dataSource.data];
+        }
+      }
+    });
+  }
+
+  openDetailsDialog(product: any): void {
+    if (!product || !product.images || !Array.isArray(product.images)) {
+      console.error('Product data is invalid:', product);
+      return;
+    }
+
+    this.dialog.open(ProductDetailsDialog, {
+      width: '500px',
+      data: { product },
+    });
+  }
+
+  openEditDialog(product: any): void {
+    const dialogRef = this.dialog.open(ProductEditDialog, {
+      width: '400px',
+      data: { ...product },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        const index = this.dataSource.data.findIndex((p) => p.id === product.id);
+        if (index !== -1) {
+          this.dataSource.data[index] = result;
+          this.dataSource.data = [...this.dataSource.data];
+        }
+      }
+    });
+  }
 }
 
+@Component({
+  selector: 'app-product-delete-dialog',
+  standalone: true,
+  templateUrl: './product-delete.html',
+  imports: [MatDialogActions, MatDialogContent, MatButtonModule],
+})
+export class ProductDeleteDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ProductDeleteDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onConfirm(): void {
+    this.dialogRef.close(true);
+  }
+}
+
+@Component({
+  selector: 'app-product-details-dialog',
+  standalone: true,
+  templateUrl: './product-details.html',
+  imports: [MatDialogActions, MatDialogContent, MatButtonModule],
+})
+export class ProductDetailsDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ProductDetailsDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'app-product-edit-dialog',
+  standalone: true,
+  templateUrl: './product-mod.html',
+  imports: [MatDialogActions, MatDialogContent, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
+})
+export class ProductEditDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ProductEditDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  save(): void {
+    this.dialogRef.close(this.data);
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+}
