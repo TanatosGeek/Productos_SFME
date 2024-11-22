@@ -1,61 +1,143 @@
+/* Estilos globales del contenedor */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .user-card {
-    width: 80%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  
-  .toolbar-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .filter-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-  }
-  
-  .filter-field {
-    width: 50%;
-  }
-  
-  .user-table {
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  .mat-header-cell,
-  .mat-cell {
-    text-align: center;
-    padding: 8px;
-  }
-  
-  .mat-header-row {
-    background-color: #3f51b5;
-    color: white;
-  }
-  
-  .mat-row:hover {
-    background-color: rgba(63, 81, 181, 0.08);
-  }
-  
-  .mat-paginator {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  img{
-    height: 50px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f3f4f6; /* Fondo más suave */
+}
+
+/* Estilos para la tarjeta del producto */
+.product-card {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco con detalles suaves */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Bordes más redondeados */
+  border: 1px solid #dcdcdc; /* Borde suave gris claro */
+}
+
+/* Título de la barra superior */
+.toolbar-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6200ea; /* Color morado vibrante */
+}
+
+/* Contenedor de filtro */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Estilo del filtro de búsqueda */
+.filter-field {
+  width: 70%;
+  background-color: #f9f9f9; /* Fondo muy suave */
+  border-radius: 8px; /* Bordes redondeados para el filtro */
+}
+
+/* Estilo de la tabla de productos */
+.product-table {
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+/* Estilos para las celdas y cabeceras */
+.mat-header-cell, .mat-cell {
+  text-align: center;
+  padding: 14px;
+  font-size: 1rem;
+  color: #333333; /* Color de texto más oscuro para mejor legibilidad */
+}
+
+/* Fondo para la fila de la cabecera */
+.mat-header-row {
+  background-color: #6200ea; /* Color morado suave */
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 8px 8px 0 0; /* Bordes redondeados para la cabecera */
+}
+
+/* Estilo de la fila cuando pasa el mouse */
+.mat-row:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border-radius: 8px; /* Bordes redondeados en las filas */
+}
+
+/* Estilo del paginator */
+.mat-paginator {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px; /* Bordes redondeados para el paginator */
+}
+
+/* Estilo de las imágenes de productos */
+.product-image {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 8px; /* Bordes redondeados para las imágenes */
+}
+
+/* Estilo de botones de acción */
+button.mat-icon-button {
+  background-color: #6200ea; /* Color de fondo morado */
+  color: #ffffff; /* Texto blanco en los botones */
+  border-radius: 50%; /* Botones redondeados */
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button.mat-icon-button:hover {
+  background-color: #3700b3; /* Color morado más oscuro en hover */
+}
+
+/* Estilo de la barra de paginación */
+.mat-paginator {
+  background-color: #6200ea;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Estilos para los botones de acción */
+button.mat-icon-button {
+  border-radius: 50%;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Colores personalizados para los íconos */
+button.mat-icon-button.delete-icon {
+  background-color: #ff4d4d; /* Rojo */
+  color: #ffffff;
+}
+
+button.mat-icon-button.delete-icon:hover {
+  background-color: #ff1a1a; /* Rojo más oscuro */
+}
+
+button.mat-icon-button.details-icon {
+  background-color: #4caf50; /* Verde */
+  color: #ffffff;
+}
+
+button.mat-icon-button.details-icon:hover {
+  background-color: #388e3c; /* Verde más oscuro */
+}
+
+button.mat-icon-button.edit-icon {
+  background-color: #1976d2; /* Azul */
+  color: #ffffff;
+}
+
+button.mat-icon-button.edit-icon:hover {
+  background-color: #1565c0; /* Azul más oscuro */
+}

@@ -5,15 +5,15 @@
   </button>
   <span>Programación WE</span>
 
-  <div *ngIf="user">
+  <div *ngIf="user" class="user-container">
     <img
       class="avatar-usuario"
       [src]="user?.avatar || 'https://default-avatar-url.com/default-avatar.png'"
       alt="Avatar"
     />
   </div>
-
-  <div *ngIf="user">
+  
+  <div *ngIf="user" class="user-container">
     <span>{{ user?.name || 'Invitado' }}</span>
   </div>
 

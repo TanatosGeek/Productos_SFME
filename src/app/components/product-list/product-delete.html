@@ -1,8 +1,8 @@
-<h3 mat-dialog-title>Confirmación</h3>
-<mat-dialog-content>
+<h3 mat-dialog-title class="dialog-title">Confirmación</h3>
+<mat-dialog-content class="dialog-content">
   ¿Está seguro de que desea eliminar este producto?
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No</button>
-  <button mat-button color="warn" (click)="onConfirm()">Sí</button>
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="onNoClick()" class="no-button">No</button>
+  <button mat-button color="warn" (click)="onConfirm()" class="yes-button">Sí</button>
 </mat-dialog-actions>

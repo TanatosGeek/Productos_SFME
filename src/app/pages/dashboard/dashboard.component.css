@@ -58,7 +58,28 @@ mat-sidenav {
     border-radius: 70%;
 }
 
-
+.user-container {
+    display: flex; /* Alinea elementos en una fila */
+    justify-content: flex-end; /* Mueve todo el contenido a la derecha */
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    margin: 1rem 0; /* Espaciado alrededor del contenedor */
+  }
+  
+  /* Estilo de la imagen de avatar */
+  .avatar-usuario {
+    width: 50px; /* Tamaño del avatar */
+    height: 50px;
+    border-radius: 50%; /* Imagen circular */
+    border: 2px solid #ccc; /* Borde decorativo */
+    margin-right: 0.5rem; /* Espaciado entre la imagen y el texto */
+  }
+  
+  /* Estilo del texto del nombre */
+  .user-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #333; /* Color del texto */
+  }
 
 mat-divider {
     border-color:white; 

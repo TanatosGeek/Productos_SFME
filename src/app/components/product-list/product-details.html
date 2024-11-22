@@ -1,9 +1,15 @@
-<mat-dialog-content>
-    <p><strong>Price:</strong> MXN ${{ data.product?.price }}.00</p>
-    <p><strong>Description:</strong> {{ data.product?.description }}</p>
-    <p><strong>Category:</strong> {{ data.product?.category?.name }}</p>
-  </mat-dialog-content>
-  
-  <mat-dialog-actions>
-    <button mat-button (click)="onClose()">Close</button>
-  </mat-dialog-actions>
+<mat-dialog-content class="dialog-content">
+  <p class="product-detail">
+    <strong>Price:</strong> <span class="price">MXN ${{ data.product?.price }}.00</span>
+  </p>
+  <p class="product-detail">
+    <strong>Description:</strong> {{ data.product?.description }}
+  </p>
+  <p class="product-detail">
+    <strong>Category:</strong> {{ data.product?.category?.name }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="onClose()" class="close-button">Close</button>
+</mat-dialog-actions>

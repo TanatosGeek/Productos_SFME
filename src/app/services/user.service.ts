@@ -52,4 +52,10 @@ export class UserService {
   getCurrentUser() {
     return this.currentUserSubject.value;
   }
+
+  // Obtener productos filtrados por título
+  getProductsByTitle(title: string): Observable<any[]> {
+  const url = `${this.apiProducts}/?title=${title}`;
+  return this.http.get<any[]>(url);
+}
 }

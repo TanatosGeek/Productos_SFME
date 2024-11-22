@@ -1,0 +1,54 @@
+/* Estilo para el contenido del diálogo */
+.dialog-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-detail {
+    margin: 0.5rem 0;
+    color: #333333;
+  }
+  
+  .product-detail strong {
+    font-weight: bold;
+    color: #4caf50; /* Color verde para las etiquetas */
+  }
+  
+  .price {
+    color: #f44336; /* Color rojo para el precio */
+    font-weight: bold;
+  }
+  
+  /* Estilo para las acciones del diálogo */
+  .dialog-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .close-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background-color: #4caf50; /* Verde */
+    color: #ffffff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .close-button:hover {
+    background-color: #388e3c; /* Verde oscuro al pasar el mouse */
+  }
+  
+  /* Sombra y bordes redondeados para el diálogo */
+  mat-dialog-container {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }

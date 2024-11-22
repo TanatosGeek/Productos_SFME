@@ -1,0 +1,65 @@
+/* Estilo para el título del diálogo */
+.dialog-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f44336; /* Color rojo para resaltar */
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Estilo para el contenido del diálogo */
+  .dialog-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333333;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0 1.5rem;
+  }
+  
+  /* Estilo para las acciones del diálogo */
+  .dialog-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  /* Botón "No" */
+  .no-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #333333;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .no-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Botón "Sí" */
+  .yes-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background-color: #f44336; /* Color rojo para advertencia */
+    color: #ffffff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .yes-button:hover {
+    background-color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+  }
+  
+  /* Sombra y bordes redondeados para el contenedor del diálogo */
+  mat-dialog-container {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }

@@ -50,12 +50,19 @@ export class ProductListComponent {
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  applyApiFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim();
+    if (filterValue) {
+      this.userService
+        .getProductsByTitle(filterValue)
+        .subscribe((filteredProducts: any[]) => {
+          this.dataSource.data = filteredProducts;
+        });
+    } else {
+      // Si no hay filtro, recargar todos los productos
+      this.userService.getProducts().subscribe((data: any[]) => {
+        this.dataSource.data = data;
+      });
     }
   }
 
@@ -111,6 +118,7 @@ export class ProductListComponent {
   selector: 'app-product-delete-dialog',
   standalone: true,
   templateUrl: './product-delete.html',
+  styleUrls: ['./product-delete.css'],
   imports: [MatDialogActions, MatDialogContent, MatButtonModule],
 })
 export class ProductDeleteDialog {
@@ -132,6 +140,7 @@ export class ProductDeleteDialog {
   selector: 'app-product-details-dialog',
   standalone: true,
   templateUrl: './product-details.html',
+  styleUrls: ['./product-details.css'],
   imports: [MatDialogActions, MatDialogContent, MatButtonModule],
 })
 export class ProductDetailsDialog {
@@ -149,6 +158,7 @@ export class ProductDetailsDialog {
   selector: 'app-product-edit-dialog',
   standalone: true,
   templateUrl: './product-mod.html',
+  styleUrls: ['./product-mod.css'],
   imports: [MatDialogActions, MatDialogContent, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
 })
 export class ProductEditDialog {

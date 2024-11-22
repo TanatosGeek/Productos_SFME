@@ -1,0 +1,71 @@
+.dialog-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #4caf50; /* Green accent */
+  }
+  
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+  }
+  
+  .form-field {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+  
+  .mat-form-field.mat-focused {
+    background: #ffffff;
+    box-shadow: 0 0 5px #4caf50; /* Highlight effect */
+  }
+  
+  .dialog-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .cancel-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background-color: #f44336; /* Red accent */
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .cancel-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
+  
+  .save-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background-color: #4caf50; /* Green accent */
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .save-button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
+  
+  /* Add a subtle shadow to the dialog */
+  mat-dialog-container {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+  }
