@@ -14,11 +14,6 @@
 
     <!-- Tabla de productos -->
     <table mat-table [dataSource]="dataSource" matSort class="product-table">
-      <!-- Columna de ID -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-        <td mat-cell *matCellDef="let product">{{ product.id }}</td>
-      </ng-container>
 
       <!-- Columna de Título -->
       <ng-container matColumnDef="title">

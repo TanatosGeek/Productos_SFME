@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  displayedColumns: string[] = ['id', 'title', 'price', 'image', 'edit', 'details', 'delete'];
+  displayedColumns: string[] = ['title', 'price', 'image', 'edit', 'details', 'delete'];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
