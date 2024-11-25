@@ -1,11 +1,11 @@
 ## 1.-Creacion de los Dialog
 En este caso ulilizaremos Material para hacer mas facil este proceso, en este punto necesitaremos crear 3 .html para cada ventana modal, con su respectivo .css
-product-delete.html
-product-delete.css
-product-details.html
-product-details.css
-product-mod.html
-product-mod.css
+`product-delete.html`
+`product-delete.css`
+`product-details.html`
+`product-details.css`
+`product-mod.html`
+`product-mod.css`
 
 ## 2.-Solicitudes a la API
 En este caso iremso a documento `user.service.ts` para agregar la funcionalidad que sera necesaria para hacer las peticiones a la API
