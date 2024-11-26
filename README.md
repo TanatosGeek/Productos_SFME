@@ -342,7 +342,7 @@ export class ProductEditDialog {
 
 
 ```
-## 4.-Creacion 
+## 5.-Creacion de la vista de Tabla
 Ingresaremos a `product-list.component.html` y le daremos como se presentaran los datos al usuario
 
 ```html
@@ -426,7 +426,90 @@ Ingresaremos a `product-list.component.html` y le daremos como se presentaran lo
 
 ```
 
+## 6.-Insercion del usuario en el Dashboard
+Entraremos al dashboard que se encuentra en `dashboard.component.html`
+```html
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span>Programación WE</span>
+
+  <div *ngIf="user" class="user-container">
+    <img
+      class="avatar-usuario"
+      [src]="user?.avatar || 'https://default-avatar-url.com/default-avatar.png'"
+      alt="Avatar"
+    />
+  </div>
+  
+  <div *ngIf="user" class="user-container">
+    <span>{{ user?.name || 'Invitado' }}</span>
+  </div>
+
+</mat-toolbar>
+```
+
+Entraremos al archivo `dashboard.component.ts` para poder guardar el ultimo usuario y no se perdieran los datos de este
+```typescript
+import { Component, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { ProductListComponent } from "../../components/product-list/product-list.component";
+import { UserService } from '../../services/user.service';
+
+@Component({
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatMenuModule,
+    ProductListComponent],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent {
+  user: any;
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.userService.currentUser$.subscribe((user) => {
+      this.user = user;
+      console.log('Usuario actual:', this.user);
+    });
+  }
+
+  logout() {
+    this.userService.clearCurrentUser();
+  }
+}
+```
+
 ## Resultados
+### Ontencion de los datos del usaurio para el Dashboard
+![image](https://github.com/user-attachments/assets/48506624-2355-4574-9a56-d90e080121d5)
+### Creación de la Tabla
+![image](https://github.com/user-attachments/assets/c75ef837-770c-4fbe-997a-9f81c76b2f9c)
+### Filtro directo a la API 
+![image](https://github.com/user-attachments/assets/d9ca09e0-7d21-48e3-874b-d8da34c8ac49)
+### Vista de Editar
+![image](https://github.com/user-attachments/assets/1e712163-02db-479c-b2ac-fdde91b78124)
+### Vista de Detalles
+![image](https://github.com/user-attachments/assets/a4787518-f7f7-4eb0-aff8-52e7560f0272)
+### Vista de eliminar
+![image](https://github.com/user-attachments/assets/17510e27-d176-47ce-862a-3a89a8e455af)
+
 
 
 
